@@ -2,9 +2,9 @@
   "name": "SJ-projekat-2021",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "api.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node api.js"
   },
   "repository": {
     "type": "git",
