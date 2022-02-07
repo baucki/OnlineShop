@@ -2,9 +2,9 @@
   "name": "SJ-projekat-2021",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon auth.js api.js app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -19,13 +19,15 @@
   "homepage": "https://github.com/baucki/SJ-projekat-2021#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "connect-history-api-fallback": "^1.6.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "sequelize": "^6.12.5",
-    "sequelize-cli": "^6.3.0"
+    "sequelize-cli": "^6.3.0",
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

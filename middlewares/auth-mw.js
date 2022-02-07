@@ -25,4 +25,16 @@ function isAdmin(req, res, next) {
     }
 }
 
-module.exports = {authentication, isAdmin};
+function socketAuthentication(msg, next) {
+    if (msg[1].token === '') {
+        next(new Error('not authenticated'));
+    } else {
+        jwt.verify(token, process.env.SECRET_KEY, (err, payload) => {
+            if (err) return next(new Error('not authenticated'));
+            msg[1].payload = payload;
+            next();
+        });
+    }
+}
+
+module.exports = {authentication, isAdmin, socketAuthentication};

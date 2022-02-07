@@ -2,12 +2,19 @@ const express = require('express');
 const {sequelize, User} = require('./models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
+const cors = require('cors')
 
 require('dotenv').config();
 
 const auth = express();
 
+let corsOptions = {
+   origin: 'https://sj-projekat-2021.herokuapp.com/',
+   optionsSuccessStatus: 200
+}
+
 auth.use(express.json());
+auth.use(cors(corsOptions));
 
 auth.post('/login', (req, res) => {
    User.findOne({where: {username: req.body.username}}).then(user => {
@@ -57,6 +64,6 @@ auth.post('/register', (req, res) => {
 
 });
 
-auth.listen( {port: 8001}, async () => {
+auth.listen( {port: process.env.PORT || 8001}, async () => {
    await sequelize.authenticate();
 });

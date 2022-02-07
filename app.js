@@ -3,6 +3,7 @@ const {sequelize} = require("./models");
 const middleware = require('./middlewares/auth-mw');
 const {router} = require('./routes/app/admin');
 const path = require('path');
+const history = require('connect-history-api-fallback');
 
 require('dotenv').config();
 
@@ -14,13 +15,12 @@ app.get('/login', (req, res) => {
 
 });
 
-app.use(middleware.authentication);
 app.use('/admin', router);
 
-app.get('/', (req, res) => {
-    res.send(`Welcome ${req.payload.username}!`);
-});
+const staticDir = express.static(path.join(__dirname, 'dist'));
 
-app.use(express.static(path.join(__dirname, 'static')))
+app.use(staticDir);
+app.use(history({index: '/index.html'}));
+app.use(staticDir);
 
-app.listen(8000);
+app.listen(process.env.PORT || 8000);
