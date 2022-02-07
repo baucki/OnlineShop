@@ -14,7 +14,7 @@ const api = express();
 const server = http.createServer(api);
 const io = new Server(server, {
     cors: {
-        origin: 'https://sj-projekat-2021.herokuapp.com/',
+        origin: 'https://sj-projekat-2021.herokuapp.com',
         methods: ['GET', 'POST'],
         credentials: true
     },
@@ -52,12 +52,13 @@ io.on('connection', socket => {
 })
 
 const corsOptions = {
-    origin: 'https://sj-projekat-2021.herokuapp.com/',
+    origin: 'https://sj-projekat-2021.herokuapp.com',
     optionsSuccessStatus: 200
 }
 
 api.use(cors(corsOptions));
 api.use(express.json());
+api.get('/', (req, res) => res.send('api server'));
 api.use('/user', adminUser.router);
 api.use(authentication);
 api.use('/admin', adminRouter.router);
