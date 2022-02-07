@@ -9,7 +9,7 @@ require('dotenv').config();
 const auth = express();
 
 let corsOptions = {
-   origin: 'https://sj-projekat-2021.herokuapp.com/',
+   origin: 'https://sj-projekat-2021.herokuapp.com',
    optionsSuccessStatus: 200
 }
 

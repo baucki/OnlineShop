@@ -2,9 +2,9 @@
   "name": "SJ-projekat-2021",
   "version": "1.0.0",
   "description": "",
-  "main": "api.js",
+  "main": "auth.js",
   "scripts": {
-    "start": "node api.js"
+    "start": "node auth.js"
   },
   "repository": {
     "type": "git",
